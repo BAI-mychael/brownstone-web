@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brownstone Brand Palette */
+  --color-brownstone-gray: #4A4A4A;
+  --color-brownstone-brown: #8B5A2B;
+  --color-brownstone-black: #000000;
+  --color-brownstone-white: #FFFFFF;
+}
