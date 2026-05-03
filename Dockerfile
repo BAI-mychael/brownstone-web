@@ -9,6 +9,7 @@ RUN npm install
 
 COPY . .
 
+<<<<<<< HEAD
 # Dev container does not need production build during image creation
 # RUN npm run build
 
@@ -16,3 +17,4 @@ EXPOSE 5173
 
 # Next.js development server
 CMD ["npm", "run", "dev"]
+ 
