@@ -60,18 +60,28 @@ const App = () => {
     <div className="min-h-screen bg-brownstone-white font-sans text-brownstone-gray">
       
       {/* 1. NAVIGATION */}
-      <nav className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+      <nav className="flex justify-between items-center px-8 py-10 max-w-7xl mx-auto">
         <div className="flex items-center">
-          <img src="/logo-banner.svg" alt="Brownstone AI & Infrastructure" className="hidden md:block h-12 w-auto" />
-          <img src="/logo-mark.svg" alt="B" className="block md:hidden h-10 w-auto" />
-        </div>
-        
-        <div className="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
-          <a href="#solutions" className="hover:text-brownstone-brown transition">Solutions</a>
-          <a href="#infrastructure" className="hover:text-brownstone-brown transition">Infrastructure</a>
-          <a href="#audit" className="hover:text-brownstone-brown transition border-b border-brownstone-brown">Request Audit</a>
-        </div>
-      </nav>
+    {/* Increased h-12 to h-20 for a commanding presence */}
+          <img 
+            src="/logo-banner.svg" 
+            alt="Brownstone AI & Infrastructure" 
+            className="hidden md:block h-20 w-auto transition-all duration-500 hover:brightness-110" 
+          />
+    {/* Increased h-10 to h-14 for mobile visibility */}
+          <img 
+            src="/logo-mark.svg" 
+            alt="B" 
+            className="block md:hidden h-14 w-auto" 
+          />
+    </div>
+  
+    <div className="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-[0.3em] text-brownstone-gray/80">
+    <a href="#solutions" className="hover:text-brownstone-brown transition">Solutions</a>
+    <a href="#infrastructure" className="hover:text-brownstone-brown transition">Infrastructure</a>
+    <a href="#audit" className="hover:text-brownstone-brown transition border-b-2 border-brownstone-brown pb-1">Request Audit</a>
+    </div>
+  </nav>
 
       {/* 2. HERO SECTION + CHAT INTERFACE */}
       <section className="max-w-7xl mx-auto px-8 py-20 grid lg:grid-cols-2 gap-16 items-center">

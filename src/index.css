@@ -7,3 +7,6 @@
   --color-brownstone-black: #000000;
   --color-brownstone-white: #FFFFFF;
 }
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "ignoreDeprecations": "6.0",
+    "target": "ESNext",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noEmitOnError": true,
+    "noImplicitThis": true,
+    "outDir": "dist",
+    "rootDir": "."
+  },
+  "include": [
+    "./",
+    "./**/*.ts",
+    "./**/*.js",
+    "src/**/*.json"
+  ],
+  "exclude": [
+    "node_modules/",
+    "build/",
+    "dist/",
+    ".cache/",
+    ".tmp/",
+    ".strapi/",
+    "src/admin/",
+    "**/*.test.*",
+    "src/plugins/**"
+  ]
+}
