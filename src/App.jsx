@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { supabase } from './supabaseClient';
 
 const App = () => {
@@ -179,8 +179,8 @@ const App = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0v16.5m0-16.5L12 3m0 0l8.25 3m-8.25-3v13.5m-8.25 1.5L12 18.75m0 0l8.25-3m-8.25 3V6.75" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-brownstone-black mb-4 uppercase tracking-wider">The Boardroom Guide</h3>
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">Technology is a line item; strategy is a multiplier. vCIO advisory aligns your infrastructure with your growth roadmap.</p>
+            <h3 className="text-xl font-bold text-brownstone-black mb-4 uppercase tracking-wider">Fractional CIO & AI Strategy</h3>
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">Technology is a line item; strategy is a multiplier. Our Fractional CIO & AI Strategy services align your infrastructure with your growth roadmap.</p>
             <ul className="text-xs font-bold text-brownstone-brown space-y-2 uppercase tracking-widest">
               <li>+ Digital Transformation</li>
               <li>+ Budget Roadmapping</li>
