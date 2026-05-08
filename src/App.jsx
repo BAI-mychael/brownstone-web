@@ -9,8 +9,9 @@ const App = () => {
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
-  // --- STATE FOR LEAD CAPTURE (Step 08) ---
+  // --- STATE FOR LEAD CAPTURE ---
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error'
 
   const handleChat = (e) => {
     e.preventDefault();
@@ -31,26 +32,35 @@ const App = () => {
     }, 1000);
   };
 
-  // --- STEP 08: LEAD CAPTURE LOGIC ---
+  // --- LEAD CAPTURE LOGIC (Supabase) ---
   const handleAuditRequest = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+    setSubmitStatus(null);
+
     const formData = new FormData(e.target);
     const emailInput = formData.get('auditEmail');
+    const nameInput = formData.get('auditName');
+    const serviceInput = formData.get('serviceInterest');
 
     try {
       const { error } = await supabase
-        .from('leads') // Ensure your table name in Supabase is exactly 'leads'
-        .insert([{ email: emailInput, source: 'homepage_audit' }]);
+        .from('leads')
+        .insert([{
+          email: emailInput,
+          full_name: nameInput || null,
+          message: null,
+          service_interest: serviceInput || 'audit',
+          source: 'homepage_audit'
+        }]);
 
       if (error) throw error;
 
-      alert('Audit Request Logged. Our vCISO will be in touch shortly.');
+      setSubmitStatus('success');
       e.target.reset();
     } catch (error) {
-      console.error('Data transmission error:', error);
-      alert('Secure connection interrupted. Please try again or contact support.');
+      console.error('Lead capture error:', error);
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -211,28 +221,76 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- 5. LEAD CAPTURE (Step 08 ACTIVE) --- */}
+      {/* --- 5. LEAD CAPTURE --- */}
       <section id="audit" className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-8 text-center">
-          <h2 className="text-4xl font-bold text-brownstone-black mb-6 tracking-tighter uppercase">Request Infrastructure Audit</h2>
-          <p className="text-gray-600 mb-10 text-lg">Identify vulnerabilities in your current stack. No sales pitch—just the architecture.</p>
-          
-          <form onSubmit={handleAuditRequest} className="flex flex-col md:flex-row gap-4">
-            <input 
-              name="auditEmail"
-              type="email" 
-              placeholder="Corporate Email Address" 
-              required
-              className="flex-grow p-4 border border-gray-200 rounded-sm focus:border-brownstone-brown outline-none"
-            />
-            <button 
-              type="submit" 
-              disabled={isSubmitting}
-              className={`bg-brownstone-brown text-white px-10 py-4 font-bold uppercase tracking-widest text-sm transition ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-brownstone-black'}`}
-            >
-              {isSubmitting ? 'Transmitting...' : 'Secure Audit'}
-            </button>
-          </form>
+        <div className="max-w-3xl mx-auto px-8 text-center">
+          <h2 className="text-4xl font-bold text-brownstone-black mb-4 tracking-tighter uppercase">Request a Service Assessment</h2>
+          <p className="text-gray-500 mb-12 text-base leading-relaxed">
+            Infrastructure audit, AI readiness review, or security assessment — tell us what you need and a vCISO will be in touch within one business day.
+          </p>
+
+          {submitStatus === 'success' ? (
+            <div className="border border-brownstone-brown bg-brownstone-brown/5 p-10 text-left">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-brownstone-brown mb-2">Transmission Confirmed</p>
+              <p className="text-xl font-bold text-brownstone-black mb-2">Request Received.</p>
+              <p className="text-gray-500 text-sm">Our vCISO team will review your request and respond within one business day. Check your inbox for a confirmation.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleAuditRequest} className="text-left space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">Full Name</label>
+                  <input
+                    name="auditName"
+                    type="text"
+                    placeholder="Jane Smith"
+                    className="w-full p-4 border border-gray-200 focus:border-brownstone-brown outline-none text-sm bg-gray-50"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">Corporate Email <span className="text-brownstone-brown">*</span></label>
+                  <input
+                    name="auditEmail"
+                    type="email"
+                    placeholder="jane@company.com"
+                    required
+                    className="w-full p-4 border border-gray-200 focus:border-brownstone-brown outline-none text-sm bg-gray-50"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">Service of Interest <span className="text-brownstone-brown">*</span></label>
+                <select
+                  name="serviceInterest"
+                  required
+                  className="w-full p-4 border border-gray-200 focus:border-brownstone-brown outline-none text-sm bg-gray-50 text-brownstone-gray"
+                >
+                  <option value="">Select a service...</option>
+                  <option value="ai_audit">AI Security Audit — Adversarial review of AI workflows & agents</option>
+                  <option value="ai_readiness">AI Readiness Assessment — Evaluate staff & business AI maturity</option>
+                  <option value="infrastructure_audit">Infrastructure Audit — Zero-Trust, ZTNA, compliance review</option>
+                  <option value="msp">MSP Services — 24x7 monitoring, helpdesk, managed IT</option>
+                  <option value="capstone">Capstone Program — AI implementation program inquiry</option>
+                  <option value="general">General Inquiry</option>
+                </select>
+              </div>
+
+              {submitStatus === 'error' && (
+                <p className="text-red-500 text-xs font-bold uppercase tracking-widest">
+                  ⚠ Transmission failed. Please try again or email us directly.
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full md:w-auto bg-brownstone-brown text-white px-12 py-5 font-bold uppercase tracking-widest text-sm transition ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-brownstone-black'}`}
+              >
+                {isSubmitting ? 'Transmitting...' : 'Submit Request →'}
+              </button>
+            </form>
+          )}
         </div>
       </section>
 
