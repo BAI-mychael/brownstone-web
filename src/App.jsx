@@ -189,8 +189,8 @@ const App = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0v16.5m0-16.5L12 3m0 0l8.25 3m-8.25-3v13.5m-8.25 1.5L12 18.75m0 0l8.25-3m-8.25 3V6.75" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-brownstone-black mb-4 uppercase tracking-wider">The Boardroom Guide</h3>
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">Technology is a line item; strategy is a multiplier. vCIO advisory aligns your infrastructure with your growth roadmap.</p>
+            <h3 className="text-xl font-bold text-brownstone-black mb-4 uppercase tracking-wider">Fractional CIO & AI Strategy</h3>
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">Technology is a line item; strategy is a multiplier. Our Fractional CIO & AI Strategy services align your infrastructure with your growth roadmap.</p>
             <ul className="text-xs font-bold text-brownstone-brown space-y-2 uppercase tracking-widest">
               <li>+ Digital Transformation</li>
               <li>+ Budget Roadmapping</li>
@@ -226,14 +226,14 @@ const App = () => {
         <div className="max-w-3xl mx-auto px-8 text-center">
           <h2 className="text-4xl font-bold text-brownstone-black mb-4 tracking-tighter uppercase">Request a Service Assessment</h2>
           <p className="text-gray-500 mb-12 text-base leading-relaxed">
-            Infrastructure audit, AI readiness review, or security assessment — tell us what you need and a vCISO will be in touch within one business day.
+            Infrastructure audit, AI readiness review, or security assessment — tell us what you need and a Fractional CIO will be in touch within one business day.
           </p>
 
           {submitStatus === 'success' ? (
             <div className="border border-brownstone-brown bg-brownstone-brown/5 p-10 text-left">
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-brownstone-brown mb-2">Transmission Confirmed</p>
               <p className="text-xl font-bold text-brownstone-black mb-2">Request Received.</p>
-              <p className="text-gray-500 text-sm">Our vCISO team will review your request and respond within one business day. Check your inbox for a confirmation.</p>
+              <p className="text-gray-500 text-sm">Our Fractional CIO team will review your request and respond within one business day. Check your inbox for a confirmation.</p>
             </div>
           ) : (
             <form onSubmit={handleAuditRequest} className="text-left space-y-4">
