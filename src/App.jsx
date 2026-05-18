@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from './supabaseClient';
+import EnterpriseServicesModule from './EnterpriseServicesModule';
+
 
 const App = () => {
   // --- STATE FOR HERO CHAT (Step 07 Prep) ---
@@ -221,7 +223,12 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- 5. LEAD CAPTURE --- */}
+      {/* --- 5. ENTERPRISE PLATFORM ARCHITECTURE UTILITY --- */}
+      <section className="bg-neutral-50 border-t border-b border-gray-100">
+        <EnterpriseServicesModule />
+      </section>
+
+      {/* --- 6. LEAD CAPTURE --- */}
       <section id="audit" className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-3xl mx-auto px-8 text-center">
           <h2 className="text-4xl font-bold text-brownstone-black mb-4 tracking-tighter uppercase">Request a Service Assessment</h2>
