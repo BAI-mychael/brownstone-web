@@ -1,4 +1,17 @@
 {
   "node": {},
-  "edge": {}
+  "edge": {
+    "40241d2dd72bd55039298185166ff566c3a50a5a07": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/brownstone-web/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/brownstone-web/app/actions/leads.ts [app-edge-rsc] (ecmascript)\" } [app-edge-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "submitLead",
+          "filename": "brownstone-web/app/actions/leads.ts"
+        }
+      },
+      "exportedName": "submitLead",
+      "filename": "brownstone-web/app/actions/leads.ts"
+    }
+  }
 }
