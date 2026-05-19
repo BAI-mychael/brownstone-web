@@ -1,4 +1,17 @@
 {
   "node": {},
-  "edge": {}
+  "edge": {
+    "40a6c9a86ff27caafa0dd65528e97fd2519d478c05": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/actions/leads.ts [app-edge-rsc] (ecmascript)\" } [app-edge-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "submitLead",
+          "filename": "app/actions/leads.ts"
+        }
+      },
+      "exportedName": "submitLead",
+      "filename": "app/actions/leads.ts"
+    }
+  }
 }

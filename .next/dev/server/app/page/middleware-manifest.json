@@ -1,0 +1,63 @@
+{
+  "sorted_middleware": [
+    "/page"
+  ],
+  "middleware": {},
+  "instrumentation": null,
+  "functions": {
+    "/page": {
+      "files": [
+        "server/middleware-build-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/next-font-manifest.js",
+        "server/server-reference-manifest.js",
+        "server/edge/chunks/ssr/node_modules_0l0o6~5._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_0ai3pym._.js",
+        "server/edge/chunks/ssr/_0u-df4u._.js",
+        "server/edge/chunks/ssr/node_modules_04woofy._.js",
+        "server/app/page_client-reference-manifest.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_0bjcd.e._.js",
+        "server/edge/chunks/ssr/node_modules_@supabase_postgrest-js_dist_index_mjs_0zozj0l._.js",
+        "server/edge/chunks/ssr/node_modules_@supabase_auth-js_dist_module_0~-tmxx._.js",
+        "server/edge/chunks/ssr/node_modules_0~.hhcw._.js",
+        "server/edge/chunks/ssr/[root-of-the-server]__04nbcoq._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_web_0xc.~wg._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_app-render_0ec16g7._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_lib_0rm7-mo._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_stream-utils_00u-2xo._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_006dx_4._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_lib_0zz8wem._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_shared_lib_07_vqlf._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_client_0mumyz8._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_build_070dxs1._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_esm_next-devtools_03--_6.._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_compiled_react-dom_0fi5j~s._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_compiled_react-server-dom-turbopack_00ly8nq._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_compiled_04q8f6-._.js",
+        "server/edge/chunks/ssr/node_modules_next_dist_05ysv09._.js",
+        "server/edge/chunks/ssr/node_modules_@swc_helpers_cjs_0r7shcb._.js",
+        "server/edge/chunks/ssr/[root-of-the-server]__01zvumt._.js",
+        "server/edge/chunks/ssr/turbopack-node_modules_next_dist_esm_build_templates_edge-wrapper_0fgkvvo.js",
+        "server/app/page/react-loadable-manifest.js"
+      ],
+      "name": "app/page",
+      "page": "/page",
+      "entrypoint": "server/edge/chunks/ssr/turbopack-node_modules_next_dist_esm_build_templates_edge-wrapper_0fgkvvo.js",
+      "matchers": [
+        {
+          "regexp": "^/(?:/)?$",
+          "originalSource": "/"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "B8T5MNDTUpQ+G932P6jzVtwemSObFT8OhY/tY1dvYZg=",
+        "__NEXT_PREVIEW_MODE_ID": "b790cef02da5b88ecc5c552f84557ce4",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5b907a208dd318df24ae739b33b3bb3f5095057bd577207b92d2b751a7c5b320",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "6e3b460015559d12eb1c6074f5cde2595f8dd806b780abb75382654cd9fd691b"
+      }
+    }
+  }
+}

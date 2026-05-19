@@ -1,7 +1,5 @@
 "use server"
 
-export const runtime = 'edge';
-
 import { createClient } from '@supabase/supabase-js'
 
 // We map both VITE_ and NEXT_PUBLIC_ for compatibility during the migration phase
