@@ -9,10 +9,10 @@ RUN npm install
 
 COPY . .
 
-# Build the production assets
-RUN npm run build
+# Dev container does not need production build during image creation
+# RUN npm run build
 
 EXPOSE 5173
 
-# Use --host to ensure Traefik can reach the Vite server
-CMD ["npm", "run", "dev", "--", "--host"]
+# Next.js development server
+CMD ["npm", "run", "dev"]
