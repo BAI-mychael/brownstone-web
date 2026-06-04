@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brownstone AI - 5x7 Blueprint Postcard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Print setup for standard 5x7 inch Postcard (plus 0.125 bleed) */
+    @page {
+      size: 5.25in 7.25in;
+      margin: 0;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #222;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      font-family: 'Outfit', sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      width: 5.25in;
+      height: 7.25in;
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      background-color: #0b111a;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    @media print {
+      body { background-color: transparent; padding: 0; gap: 0; display: block; overflow: hidden; }
+      .page { 
+        box-shadow: none; 
+        margin: 0; 
+        page-break-after: always;
+        page-break-inside: avoid;
+        max-height: 7.25in;
+        overflow: hidden;
+      }
+      .page:last-child {
+        page-break-after: auto;
+      }
+      .no-print { display: none !important; }
+    }
+
+    .font-heading { font-family: 'Montserrat', sans-serif; }
+    
+    /* Brand Colors */
+    .text-copper { color: #b07d54; }
+    .bg-copper { background-color: #b07d54; }
+    .border-copper { border-color: #b07d54; }
+    .text-slate-light { color: #94a3b8; }
+    
+    /* Side B Subtle Grid Background */
+    .blueprint-bg {
+      position: absolute;
+      top: -20%;
+      right: -20%;
+      width: 150%;
+      height: 150%;
+      background-image: radial-gradient(rgba(176, 125, 84, 0.08) 1px, transparent 1px);
+      background-size: 10px 10px;
+      z-index: 0;
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+
+    /* Side A Bottom Corners */
+    .corner-graphic {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 0;
+    }
+
+    /* Helper to invert dark logo to white on the dark background */
+    .logo-invert {
+      filter: brightness(0) invert(1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="w-full text-center text-white font-mono text-sm mb-4 no-print">
+    <p class="mb-2"><strong>5" x 7" Postcard Print Layout (Blueprint)</strong></p>
+    <p>Press Cmd+P. Set Paper Size to Custom (5.25" x 7.25") and Margins to "None".</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SIDE A: THE FRONT (Dark Theme)             -->
+  <!-- ========================================== -->
+  <div class="page p-[0.35in]">
+    
+    <!-- Top Header & Logo -->
+    <div class="flex flex-col relative z-10 w-full mb-3 mt-1 items-start">
+      <div class="relative flex items-center p-2 -ml-2">
+        <!-- Soft blended aura so dark logo text is readable on navy background -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.8)_20%,transparent_70%)] opacity-80 pointer-events-none"></div>
+        <img src="./logo-banner.svg" alt="Brownstone AI" class="h-[3.25rem] object-contain object-left relative z-10">
+      </div>
+      <p class="italic text-copper text-[0.7rem] font-medium tracking-wide mt-1 pl-1">Architecting the Modern Enterprise.</p>
+    </div>
+
+    <!-- Main Hero Text -->
+    <div class="relative z-10 mb-3 pr-2">
+      <h1 class="font-heading font-black text-white text-[1.65rem] leading-[1.05] tracking-tight">
+        FUTURE-PROOF YOUR SYSTEMS. <br/>
+        <span class="text-copper">SECURE YOUR INTELLIGENCE.</span>
+      </h1>
+      <p class="mt-2 text-gray-300 font-medium text-[0.8rem] leading-relaxed">
+        Stop patching legacy systems. We build high-performance, Zero-Trust web applications and automated infrastructure that scale with your business.
+      </p>
+    </div>
+
+    <!-- Thin Divider -->
+    <div class="flex items-center my-3 relative z-10 w-4/5">
+      <div class="flex-grow h-[1px] bg-copper opacity-80"></div>
+      <div class="w-[4px] h-[4px] rounded-full bg-copper ml-[-2px]"></div>
+    </div>
+
+    <!-- Feature Stack -->
+    <!-- Reduced gap dramatically to compress vertical space -->
+    <div class="flex flex-col gap-3 relative z-10 mt-1">
+      
+      <!-- Feature 1 -->
+      <div class="flex items-start gap-3">
+        <div class="w-[36px] h-[36px] rounded-full border border-copper flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-white text-[0.85rem] tracking-wide uppercase leading-tight mb-0.5">Uncompromising Security</h3>
+          <p class="text-gray-400 text-[0.7rem] leading-snug">We implement strict Zero-Trust frameworks, database-level row security, and edge encryption so your data remains impenetrable.</p>
+        </div>
+      </div>
+
+      <div class="w-full h-[1px] bg-slate-800 opacity-50 ml-[48px]"></div>
+
+      <!-- Feature 2 -->
+      <div class="flex items-start gap-3">
+        <div class="w-[36px] h-[36px] rounded-full border border-copper flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-white text-[0.85rem] tracking-wide uppercase leading-tight mb-0.5">Accelerated Delivery</h3>
+          <p class="text-gray-400 text-[0.7rem] leading-snug">Manual deployments cost you time and money. We engineer automated CI/CD pipelines that turn days of deployment friction into minutes.</p>
+        </div>
+      </div>
+
+      <div class="w-full h-[1px] bg-slate-800 opacity-50 ml-[48px]"></div>
+
+      <!-- Feature 3 -->
+      <div class="flex items-start gap-3">
+        <div class="w-[36px] h-[36px] rounded-full border border-copper flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-white text-[0.85rem] tracking-wide uppercase leading-tight mb-0.5">High-Performance Web Apps</h3>
+          <p class="text-gray-400 text-[0.7rem] leading-snug">Deliver blazing-fast user experiences. We leverage the latest in server-side rendering and edge computing to ensure speed.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Removed space below "High-Performance Web Apps" to optimize -->
+
+    <!-- Bottom Icon Row (Pushed to bottom) -->
+    <div class="mt-auto flex justify-between items-end relative z-10 w-full pt-3 pb-1 border-t border-slate-800">
+      <div class="flex flex-col items-center gap-1 text-center w-1/3">
+        <svg class="w-5 h-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span class="text-[0.55rem] font-bold text-gray-300 uppercase tracking-widest">Strategic<br/>Consulting</span>
+      </div>
+      <div class="flex flex-col items-center gap-1 text-center w-1/3">
+        <svg class="w-5 h-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+        <span class="text-[0.55rem] font-bold text-gray-300 uppercase tracking-widest">Cloud<br/>Architecture</span>
+      </div>
+      <div class="flex flex-col items-center gap-1 text-center w-1/3">
+        <svg class="w-5 h-5 text-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        <span class="text-[0.55rem] font-bold text-gray-300 uppercase tracking-widest">Identity<br/>Security</span>
+      </div>
+    </div>
+
+    <!-- Side A Bottom Accents -->
+    <svg class="corner-graphic" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <polygon points="100,60 100,100 0,100" fill="#a66a42" opacity="0.8" />
+      <polygon points="100,75 100,100 20,100" fill="#111827" />
+    </svg>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- SIDE B: THE BACK (Dark Theme Blueprint)    -->
+  <!-- ========================================== -->
+  <div class="page p-[0.35in] flex flex-col relative">
+    
+    <div class="blueprint-bg"></div>
+
+    <!-- Top Logo (Restored to the B logo) -->
+    <div class="flex items-center justify-center relative z-10 w-full mb-3 mt-1">
+      <img src="./logo-mark.svg" alt="Brownstone AI" class="h-[3.75rem] object-contain">
+    </div>
+
+    <!-- Header Text -->
+    <div class="relative z-10 mb-3 text-center">
+      <h2 class="font-heading font-black text-white text-[1.4rem] leading-[1.05] uppercase tracking-tight mb-2">
+        The Master Architect's Blueprint
+      </h2>
+      <div class="w-12 h-[2px] bg-copper mx-auto mb-2"></div>
+      <p class="text-gray-300 font-medium text-[0.75rem] leading-relaxed px-4">
+        True digital transformation requires an elite foundation. At Brownstone, we architect resilient, scalable systems tailored to your exact operational needs.
+      </p>
+    </div>
+
+    <!-- 2x2 Grid -->
+    <div class="grid grid-cols-2 gap-3 relative z-10 mb-3">
+      <!-- Box 1 -->
+      <div class="border border-copper rounded-md p-2 flex flex-col items-center text-center bg-[#0b111a]/80 backdrop-blur-sm">
+        <svg class="w-6 h-6 text-copper mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+        <h4 class="font-heading font-bold text-white text-[0.65rem] uppercase tracking-wider mb-1">Frontend<br/>Excellence</h4>
+        <p class="text-[0.55rem] text-gray-400 leading-snug">Next.js, TypeScript, and Tailwind CSS for dynamic interfaces.</p>
+      </div>
+      <!-- Box 2 -->
+      <div class="border border-copper rounded-md p-2 flex flex-col items-center text-center bg-[#0b111a]/80 backdrop-blur-sm">
+        <svg class="w-6 h-6 text-copper mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+        <h4 class="font-heading font-bold text-white text-[0.65rem] uppercase tracking-wider mb-1">Cloud &<br/>Edge</h4>
+        <p class="text-[0.55rem] text-gray-400 leading-snug">Cloudflare computing, routing, and WAF security for global performance.</p>
+      </div>
+      <!-- Box 3 -->
+      <div class="border border-copper rounded-md p-2 flex flex-col items-center text-center bg-[#0b111a]/80 backdrop-blur-sm">
+        <svg class="w-6 h-6 text-copper mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <h4 class="font-heading font-bold text-white text-[0.65rem] uppercase tracking-wider mb-1">Infrastructure<br/>Automation</h4>
+        <p class="text-[0.55rem] text-gray-400 leading-snug">GitHub Actions for push-to-deploy CI/CD integration and IaC.</p>
+      </div>
+      <!-- Box 4 -->
+      <div class="border border-copper rounded-md p-2 flex flex-col items-center text-center bg-[#0b111a]/80 backdrop-blur-sm">
+        <svg class="w-6 h-6 text-copper mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        <h4 class="font-heading font-bold text-white text-[0.65rem] uppercase tracking-wider mb-1">Identity &<br/>Security</h4>
+        <p class="text-[0.55rem] text-gray-400 leading-snug">Row-Level Security and Zero-Trust auth models to protect data access.</p>
+      </div>
+    </div>
+
+    <!-- Call to Action Box -->
+    <div class="border border-slate-700 bg-slate-900/50 rounded-lg p-3 relative z-10 w-full flex-grow mb-3 flex flex-col justify-center">
+      <h3 class="font-heading font-bold text-copper text-[0.85rem] uppercase tracking-wider leading-tight mb-1">Is Your Infrastructure Ready For Scale?</h3>
+      <p class="text-white text-[0.7rem] mb-3">Claim Your <span class="text-copper font-bold">Free</span> Architecture Review.</p>
+      
+      <div class="flex justify-between items-center gap-2">
+        <ul class="flex flex-col gap-2">
+          <li class="flex items-start gap-1.5">
+            <svg class="w-3.5 h-3.5 text-copper shrink-0 mt-[1px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-[0.55rem] text-gray-400 leading-tight">Comprehensive assessment of your current tech stack.</span>
+          </li>
+          <li class="flex items-start gap-1.5">
+            <svg class="w-3.5 h-3.5 text-copper shrink-0 mt-[1px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-[0.55rem] text-gray-400 leading-tight">Identification of security and CI/CD bottlenecks.</span>
+          </li>
+          <li class="flex items-start gap-1.5">
+            <svg class="w-3.5 h-3.5 text-copper shrink-0 mt-[1px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-[0.55rem] text-gray-400 leading-tight">A customized roadmap to modernize your applications.</span>
+          </li>
+        </ul>
+
+        <!-- QR Code Block -->
+        <div class="flex flex-col items-center shrink-0 w-[65px]">
+          <div class="bg-white p-1 rounded-sm w-full mb-1">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://brownstone-ai.com/start?utm_source=print&utm_medium=qr&color=0b111a&bgcolor=FFFFFF" alt="QR Code" class="w-full h-auto">
+          </div>
+          <p class="text-[0.4rem] text-gray-400 leading-tight text-center">Scan to schedule your <span class="text-copper font-bold">strategic briefing.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-auto border-t border-slate-800 pt-2 flex items-center justify-between relative z-10 w-full px-1">
+      <div class="flex items-center gap-1.5 shrink-0">
+        <svg class="w-4 h-4 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        </svg>
+        <span class="font-bold text-gray-400 text-[0.65rem]">brownstone-ai.com</span>
+      </div>
+      <div class="w-[1px] h-6 bg-slate-800 mx-2 shrink-0"></div>
+      <div class="flex items-center gap-1.5 flex-grow">
+        <svg class="w-4 h-4 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        <p class="text-[0.45rem] text-gray-500 leading-tight">
+          We employ Zero-Trust principles for all client communications and data ingestion.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

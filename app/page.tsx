@@ -46,12 +46,27 @@ const App = () => {
     const emailInput = formData.get('auditEmail') as string;
     const nameInput = formData.get('auditName') as string;
     const serviceInput = formData.get('serviceInterest') as string;
+    
+    // Grab new native scheduling fields
+    const dateInput = formData.get('auditDate') as string;
+    const timeInput = formData.get('auditTime') as string;
+    const messageInput = formData.get('auditMessage') as string;
+
+    // Combine them intelligently into the final message payload
+    let finalMessage = "";
+    if (dateInput || timeInput) {
+      finalMessage += `Requested Strategy Call: ${dateInput || 'Any Day'} at ${timeInput || 'Any Time'}\n\n`;
+    }
+    if (messageInput) {
+      finalMessage += `Message:\n${messageInput}`;
+    }
 
     const serverData = new FormData();
     serverData.append('email', emailInput);
     serverData.append('full_name', nameInput || '');
     serverData.append('service_interest', serviceInput || 'audit');
     serverData.append('source', 'homepage_audit');
+    serverData.append('message', finalMessage.trim() || 'No additional message provided.');
     
     // Honeypot Field Check
     if (formData.get('fax_number')) serverData.append('fax_number', formData.get('fax_number') as string);
@@ -284,6 +299,36 @@ const App = () => {
                   <option value="capstone">Capstone Program — AI implementation program inquiry</option>
                   <option value="general">General Inquiry</option>
                 </select>
+              </div>
+
+              {/* Native Scheduling & Message Block */}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">Requested Call Date <span className="lowercase font-normal tracking-normal">(Optional)</span></label>
+                  <input
+                    name="auditDate"
+                    type="date"
+                    className="w-full p-4 border border-gray-200 focus:border-brownstone-brown outline-none text-sm bg-gray-50 text-brownstone-gray"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">Requested Time <span className="lowercase font-normal tracking-normal">(Optional)</span></label>
+                  <input
+                    name="auditTime"
+                    type="time"
+                    className="w-full p-4 border border-gray-200 focus:border-brownstone-brown outline-none text-sm bg-gray-50 text-brownstone-gray"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">Your Message</label>
+                <textarea
+                  name="auditMessage"
+                  placeholder="Tell us about your infrastructure or scheduling preferences..."
+                  rows={4}
+                  className="w-full p-4 border border-gray-200 focus:border-brownstone-brown outline-none text-sm bg-gray-50 resize-none text-brownstone-gray"
+                ></textarea>
               </div>
 
               {submitStatus === 'error' && (
