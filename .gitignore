@@ -28,3 +28,6 @@ dist-ssr
 .next
 out
 build
+
+# Environment variables
+.env

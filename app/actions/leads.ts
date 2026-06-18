@@ -3,11 +3,15 @@
 import { createClient } from '@supabase/supabase-js'
 import { Resend } from 'resend'
 // We map both VITE_ and NEXT_PUBLIC_ for compatibility during the migration phase
-const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || ''
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+const getSupabaseClient = () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || ''
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error('Supabase URL and Anon Key must be configured.')
+  }
+  return createClient(supabaseUrl, supabaseKey)
+}
 
-// Server-side Supabase client initialization
-const supabase = createClient(supabaseUrl, supabaseKey)
 
 export async function submitLead(formData: FormData) {
   // 1. Check the Honeypot Field (Bot Mitigation)
@@ -32,6 +36,7 @@ export async function submitLead(formData: FormData) {
 
   // 3. Insert into Supabase
   try {
+    const supabase = getSupabaseClient()
     const { error } = await supabase
       .from('leads')
       .insert([{
