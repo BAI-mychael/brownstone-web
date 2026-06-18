@@ -12,7 +12,6 @@ const getSupabaseClient = () => {
   return createClient(supabaseUrl, supabaseKey)
 }
 
-
 export async function submitLead(formData: FormData) {
   // 1. Check the Honeypot Field (Bot Mitigation)
   const honeypot = formData.get('fax_number')
