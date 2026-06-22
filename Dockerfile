@@ -5,8 +5,7 @@ WORKDIR /opt/app
 # Make lockfile optional to ensure the build starts
 COPY package.json package-lock.json ./
 
-# Add this to your Dockerfile before the RUN npm install line
-RUN npm config set platform linux && npm config set arch x64
+
 RUN npm install
 
 COPY . .
