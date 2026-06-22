@@ -29,5 +29,8 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.5.0",
     "typescript": "6.0.3"
+  },
+  "optionalDependencies": {
+    "@lightningcss/linux-x64-gnu": "1.29.0"
   }
 }
