@@ -1,9 +1,11 @@
+import { withOpenNextCloudflare } from '@opennextjs/cloudflare';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Turbopack options go here, not under 'experimental' if using newer versions
-  // Or remove the 'turbo' block temporarily to see if it fixes the crash
+  env: {
+    SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+  },
 };
 
-export default nextConfig;
-
-import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());
+export default withOpenNextCloudflare(nextConfig);
