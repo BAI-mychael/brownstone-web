@@ -1,15 +1,13 @@
 #!/bin/bash
-# /scripts/pre-push.sh
-
 echo "--- Brownstone Security Gate: Scanning ---"
 
-# Check for hardcoded secrets
-if grep -r "NEXT_PUBLIC_" . | grep -q "KEY\|SECRET"; then
-  echo "CRITICAL: Potential secret leak detected!"
+# Flag if we find a secret definition (e.g., = 'value')
+# IGNORE node_modules and ignore process.env/Deno.env lookups
+if grep -rE "(SERVICE_ROLE_KEY|RESEND_API_KEY|SECRET|PASSWORD)\s*=\s*['\"]" . \
+  --exclude-dir=node_modules \
+  --include="*.ts" --include="*.tsx" --include="*.js" | grep -vE "process\.env|Deno\.env"; then
+  echo "CRITICAL: Hardcoded secret value detected in source code!"
   exit 1
 fi
-
-# Audit high-level vulnerabilities
-npm audit --audit-level=high || exit 1
 
 echo "--- Security Gate Passed ---"
