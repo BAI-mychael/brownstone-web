@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { validateProductionEnv } from "@/lib/env-check"; // Import the validator
+
+// Run environment validation at runtime
+// This ensures that the Ghost Network services are configured correctly 
+// before any UI components attempt to access them.
+if (process.env.NODE_ENV === 'production') {
+  validateProductionEnv();
+}
 
 export const metadata: Metadata = {
   title: "Brownstone AI & Infrastructure",
