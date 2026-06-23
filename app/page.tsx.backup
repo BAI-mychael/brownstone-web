@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { submitLead } from "./actions/leads";
+//import EnterpriseServicesModule from '../components/EnterpriseServicesModule';
 
 interface Message {
   role: "user" | "assistant";
@@ -88,16 +89,9 @@ export default function Home() {
     <div className="min-h-screen bg-neutral-50 font-sans text-neutral-700">
       <nav className="flex justify-between items-center px-8 py-10 max-w-7xl mx-auto">
         <div className="flex items-center">
-          <img
-            src="/logo-banner.svg"
-            alt="Brownstone AI & Infrastructure"
-            className="hidden md:block h-20 w-auto transition-all duration-500 hover:brightness-110"
-          />
-          <img
-            src="/logo-mark.svg"
-            alt="B"
-            className="block md:hidden h-14 w-auto"
-          />
+          <span className="text-2xl font-bold tracking-tight text-neutral-900">
+            BROWNSTONE AI
+          </span>
         </div>
         <div className="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-[0.3em] text-neutral-500">
           <a href="#solutions" className="hover:text-neutral-900 transition">

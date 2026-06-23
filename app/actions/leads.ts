@@ -11,19 +11,8 @@ const getSupabaseClient = () => {
   return createClient(supabaseUrl, supabaseKey)
 }
 
-// Edge-compatible Resend helper using native fetch
-async function sendEmail({
-  from,
-  to,
-  subject,
-  html,
-  text
-}: {
-  from: string
-  to: string | string[]
-  subject: string
-  html?: string
-  text?: string
+async function sendEmail({ from, to, subject, html, text }: {
+  from: string; to: string | string[]; subject: string; html?: string; text?: string;
 }) {
   const resendKey = process.env.RESEND_API_KEY
   if (!resendKey) {
@@ -51,19 +40,16 @@ async function sendEmail({
     console.error('[RESEND ERROR]:', err)
     throw new Error(`Resend API error: ${err}`)
   }
-
   return res.json()
 }
 
 export async function submitLead(formData: FormData) {
-  // 1. Honeypot check
   const honeypot = formData.get('fax_number')
   if (honeypot) {
     console.warn('[SECURITY] Bot detected via honeypot.')
     return { success: true, message: "Request received." }
   }
 
-  // 2. Extract data
   const email = formData.get('email') as string
   const full_name = formData.get('full_name') as string
   const service_interest = formData.get('service_interest') as string
@@ -74,7 +60,6 @@ export async function submitLead(formData: FormData) {
     return { success: false, error: "Missing required fields." }
   }
 
-  // 3. Insert into Supabase
   try {
     const supabase = getSupabaseClient()
     const { error } = await supabase
@@ -86,7 +71,6 @@ export async function submitLead(formData: FormData) {
       return { success: false, error: "Database transmission failed." }
     }
 
-    // 4. Send notifications
     try {
       const adminEmail = process.env.ADMIN_EMAIL || 'mychael.brown@brownstone-ai.com'
       const envName = process.env.NODE_ENV === 'development' ? 'DEV' : 'PROD'
@@ -96,7 +80,6 @@ export async function submitLead(formData: FormData) {
         service_interest.toLowerCase().includes('enterprise') ||
         service_interest.toLowerCase().includes('architecture')
 
-      // Email notification
       await sendEmail({
         from: 'Brownstone Alerts <onboarding@resend.dev>',
         to: adminEmail,
@@ -112,7 +95,6 @@ export async function submitLead(formData: FormData) {
         `
       })
 
-      // SMS for high priority
       if (isHighPriority) {
         const adminSmsGateway = process.env.ADMIN_SMS_GATEWAY || '2024311199@txt.att.net'
         await sendEmail({

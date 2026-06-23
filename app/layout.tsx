@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-export const runtime = 'edge';
 export const metadata: Metadata = {
   title: "Brownstone AI & Infrastructure",
   description: "Fractional CIO & AI Strategist",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
