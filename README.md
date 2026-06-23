@@ -4,26 +4,38 @@ A high-performance, edge-deployed lead generation and telemetry tracking platfor
 
 ## Architecture
 
-This platform has been engineered for maximum security, zero-trust data sovereignty, and zero-cost operational scalability.
+This platform is engineered for maximum security, zero-trust data sovereignty, and zero-cost operational scalability.
 
-- **Framework:** Next.js (App Router)
-- **Deployment:** Cloudflare Pages (Edge Network via `@cloudflare/next-on-pages`)
+- **Framework:** Next.js 16 (App Router)
+- **Build Adapter:** OpenNext for Cloudflare (`@opennextjs/cloudflare`)
+- **Deployment:** Cloudflare Workers (Edge Network via Wrangler)
 - **Database:** Supabase (PostgreSQL)
+- **Email Notifications:** Resend API (fetch-based, edge-compatible)
 - **Styling:** Tailwind CSS v4
 - **Security:**
-- Row-Level Security (Append-Only Ingestion Vault)
-- Next.js Server Actions with built-in Honeypot spam mitigation
-- Edge-runtime API processing
+  - Row-Level Security (Append-Only Ingestion Vault)
+  - Next.js Server Actions with built-in Honeypot spam mitigation
+  - Edge-runtime API processing
+
+## Environment Variables
+
+The following secrets must be configured in the Cloudflare Dashboard (**Workers & Pages > brownstone-web > Settings > Variables**) and in `.dev.vars` for local development:
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (for server-side inserts) |
+| `RESEND_API_KEY` | Resend API key for email notifications |
+| `ADMIN_EMAIL` | Primary notification recipient (e.g., mychael.brown@brownstone-ai.com) |
+| `ADMIN_SMS_GATEWAY` | Email-to-SMS gateway for high-priority alerts |
 
 ## Development
 
-First, run the development server locally:
+Run the local Wrangler dev server (mirrors the Cloudflare Workers runtime):
 
 ```bash
-npm run dev
-```
+npx wrangler dev
 
-Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
 
 ## Cloudflare Pages Deployment
 
