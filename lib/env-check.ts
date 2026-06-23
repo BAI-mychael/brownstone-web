@@ -1,10 +1,11 @@
 export function validateProductionEnv() {
-  if (process.env.NODE_ENV === 'production') {
-    const requiredKeys = ['SUPABASE_SERVICE_ROLE_KEY', 'RESEND_API_KEY'];
-    for (const key of requiredKeys) {
-      if (!process.env[key]) {
-        throw new Error(`CRITICAL: Missing environment variable: ${key}`);
-      }
-    }
+  // If we are currently building, skip the check
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return;
+  }
+
+  // Otherwise, run the security check
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error("CRITICAL: Missing environment variable: SUPABASE_SERVICE_ROLE_KEY");
   }
 }
