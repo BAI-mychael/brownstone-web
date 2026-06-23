@@ -1,5 +1,3 @@
-import { withOpenNextCloudflare } from '@opennextjs/cloudflare';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
@@ -8,4 +6,4 @@ const nextConfig = {
   },
 };
 
-export default withOpenNextCloudflare(nextConfig);
+export default nextConfig;
